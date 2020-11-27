@@ -1,2 +1,2 @@
 # BarterApp
-Team Tajuvz entry to DLSU Hackathon 2020
+Team Tajuvz entry to DSC Hackathon 2020
