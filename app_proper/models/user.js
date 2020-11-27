@@ -46,7 +46,14 @@ const userSchema =new mongoose.Schema({
     salt:{
         type:String,
         required:true
-    }
+    },
+    reviews:[{
+        reviewedBy:String,
+        rating:Number,
+        review:String,
+        barterSession:String,
+        timestamp:Date
+    }]
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -4,7 +4,8 @@
   "description": "Team Tajuvz Entry in DLSU 2020 Hackathon",
   "main": "server.js",
   "scripts": {
-    "startApp": "nodemon app_server.js"
+    "startApp": "nodemon app_server.js",
+    "build-css":"tailwindcss build src/styles.css -o public/styles.css"
   },
   "repository": {
     "type": "git",

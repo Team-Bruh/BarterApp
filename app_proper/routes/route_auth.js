@@ -65,7 +65,7 @@ router.post('/login', async (req,res)=>{           // backend login process
 
 });
 
-router.post('/token/refresh', (req, res) =>{
+router.post('/token/refresh', (req, res) =>{        // refreshes JWT token
     const refreshToken = req.body.token;
     if(refreshToken == null) return res.sendStatus(401);
     
@@ -77,7 +77,7 @@ router.post('/token/refresh', (req, res) =>{
     }
 });
 
-router.post('/token/delete', async (req,res) => {
+router.post('/token/delete', async (req,res) => {   // delete JWT refresh token
     await Token.findOneAndDelete({refreshToken:req.body.token});
     res.sendStatus(204);
 });

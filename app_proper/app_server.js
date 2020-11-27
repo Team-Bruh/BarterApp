@@ -15,7 +15,7 @@ app.use(express.json());
 
 // Routes
 const authRoutes = require('./routes/route_auth');
-
+const barterRoutes = require('./routes/route_barterSessions');
 
 //  MongoDB Connection
 const mongoose_uri = process.env.ATLAS_URI;
@@ -32,13 +32,14 @@ connection.once('open', ()=>{
 });
 
 app.set('view engine', 'ejs');
-app.use(express.static('views'));
+app.use(express.static('src'));
 app.use(express.json());
 
 
 // Allows Retrievel of Data from Url & Body
 app.use(express.urlencoded({extended:false}));
 app.use('/', authRoutes);
+app.use('/barter', barterRoutes);
 
 app.listen(3404, function(){
     console.log('Session started on port 3404');
