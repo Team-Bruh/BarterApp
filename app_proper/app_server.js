@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
 app.get('/register', (req,res)=>{
-    res.status(200).send();
+    res.render('users/register');
 });
 
 app.post('/register', async (req,res)=>{
@@ -64,8 +64,24 @@ app.post('/register', async (req,res)=>{
     }
 });
 
-app.post('/login', (req,res)=>{ 
-    
+app.post('/login', async (req,res)=>{ 
+    let user = await User.findOne({email:req.body.email});
+    if(user == null){
+        return res.status(400).send('User not found');
+    }
+
+    try{
+        if(await bcrypt.compare(req.body.password, user.password)){
+            res.status(200).send("Login Success");
+        }else{
+            res.status(200).send("Incorrect Password");
+        }
+    }catch(er){
+        console.log(er);
+        res.status(500).send();
+    }
+
+    console.log(user);
 });
 
 app.listen(3404, function(){
