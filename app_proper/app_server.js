@@ -5,7 +5,9 @@ const logger = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-var path=require('path');
+const path=require('path');
+const http=require('http');
+const server = http.createServer(app);
 
 app.use(methodOverride('_method'));
 
@@ -48,7 +50,7 @@ app.get('/shop', (req,res)=>{
     res.render('index');
 });
  
-app.listen(3000, function(){
+server.listen(3000, function(){
     console.log('Session started on port 3000');
 });
 
