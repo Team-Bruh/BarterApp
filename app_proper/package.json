@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "startApp": "nodemon app_server.js",
-    "build-css":"npx tailwindcss build ./public/css/sources.css -o ./public/css/styles.css"
+    "build-css": "npx tailwindcss build ./public/css/sources.css -o ./public/css/styles.css"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "morgan": "^1.10.0",
     "postcss": "^8.1.10",
     "slugify": "^1.4.6",
+    "socket.io": "^3.0.3",
     "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
