@@ -244,24 +244,6 @@ router.delete('/host/session/:id', tokenAuthenticator.authenticate, async(req,re
 });
 
 
-// Barter Session Bidder
-
-router.get('/bidder/session/:id', tokenAuthenticator.authenticate, async(req,res)=>{        // gets bidder view of barter session
-
-});
-
-router.post('/bidder/session/:id/bid', tokenAuthenticator.authenticate, async(req,res)=>{   // posts bidder's offer for barter session
-
-});
-
-router.post('/bidder/session/:id/negotiations/cancel', tokenAuthenticator.authenticate, async(req,res)=>{   // cancels ongoing negotiations of bidder
-
-});
-
-router.post('/bidder/session/:id/complete', tokenAuthenticator.authenticate, async(req,res)=>{      // completes the barter session (host rating is also prompted here)
-
-});
-
 
 
 
