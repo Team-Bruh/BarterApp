@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const tokenAuthenticator = require('../services/tokenAuthenticator');
 const BarterSession = require('../models/barterSession');
-const { token } = require('morgan');
+
+// Barter Session Host
 
 router.post('/new', tokenAuthenticator.authenticate, async (req,res)=>{   // posts new barter session
     
@@ -25,7 +26,7 @@ router.post('/new', tokenAuthenticator.authenticate, async (req,res)=>{   // pos
 
 });
 
-router.get('/session/:id', tokenAuthenticator.authenticate, async (req, res) =>{  // gets existing barter session
+router.get('/host/session/:id', tokenAuthenticator.authenticate, async (req, res) =>{  // gets existing barter session
 
     try{
 
@@ -46,7 +47,7 @@ router.get('/session/:id', tokenAuthenticator.authenticate, async (req, res) =>{
 
 });
 
-router.put('/session/:id', tokenAuthenticator.authenticate, async(req,res)=>{   // updates existing barter session
+router.put('/host/session/:id/edit', tokenAuthenticator.authenticate, async(req,res)=>{   // updates existing barter session
 
     try{
 
@@ -81,7 +82,7 @@ router.put('/session/:id', tokenAuthenticator.authenticate, async(req,res)=>{   
 
 });
 
-router.put('/session/:id/offer/take', tokenAuthenticator.authenticate, async(req,res)=>{  // takes offer and sends barter session into negotiation stage
+router.put('/host/session/:id/offer/take', tokenAuthenticator.authenticate, async(req,res)=>{  // takes offer and sends barter session into negotiation stage
     try{
 
         let barterSession = await BarterSession.findById(req.params.id);
@@ -108,7 +109,7 @@ router.put('/session/:id/offer/take', tokenAuthenticator.authenticate, async(req
 
 });
 
-router.put('/session/:id/offer/decline', tokenAuthenticator.authenticate, async(req,res)=>{ // removes bidder from barter session's bidding
+router.put('/host/session/:id/offer/decline', tokenAuthenticator.authenticate, async(req,res)=>{ // removes bidder from barter session's bidding
     try{
 
         let barterSession = await BarterSession.findById(req.params.id);
@@ -135,7 +136,7 @@ router.put('/session/:id/offer/decline', tokenAuthenticator.authenticate, async(
     }
 });
 
-router.delete('/session/:id/negotiations/cancel', tokenAuthenticator.authenticate, async(req,res)=>{  // cancels negotiations and sends barter session back to bidding stage
+router.delete('/host/session/:id/negotiations/cancel', tokenAuthenticator.authenticate, async(req,res)=>{  // cancels negotiations and sends barter session back to bidding stage
     try{
 
         let barterSession = await BarterSession.findById(req.params.id);
@@ -163,7 +164,7 @@ router.delete('/session/:id/negotiations/cancel', tokenAuthenticator.authenticat
     }
 });
 
-router.put('/session/:id/negotiations/finalize', tokenAuthenticator.authenticate, async(req,res)=>{     // finalizes negotations and sens barter session to pending stage
+router.put('/host/session/:id/negotiations/finalize', tokenAuthenticator.authenticate, async(req,res)=>{     // finalizes negotations and sens barter session to pending stage
     try{
 
         let barterSession = await BarterSession.findById(req.params.id);
@@ -189,7 +190,7 @@ router.put('/session/:id/negotiations/finalize', tokenAuthenticator.authenticate
     }
 });
 
-router.put('/session/:id/complete', tokenAuthenticator.authenticate, async (req,res)=>{ // completes the barter session
+router.put('/host/session/:id/complete', tokenAuthenticator.authenticate, async (req,res)=>{ // completes the barter session
     try{
 
         let barterSession = await BarterSession.findById(req.params.id);
@@ -220,7 +221,7 @@ router.put('/session/:id/complete', tokenAuthenticator.authenticate, async (req,
     }
 });
 
-router.delete('/session/:id', tokenAuthenticator.authenticate, async(req,res)=>{    // deletes the barter session
+router.delete('/host/session/:id', tokenAuthenticator.authenticate, async(req,res)=>{    // deletes the barter session
     try{
 
         let barterSession = await BarterSession.findById(req.params.id);
@@ -241,6 +242,28 @@ router.delete('/session/:id', tokenAuthenticator.authenticate, async(req,res)=>{
         res.sendStatus(400);
     }
 });
+
+
+// Barter Session Bidder
+
+router.get('/bidder/session/:id', tokenAuthenticator.authenticate, async(req,res)=>{        // gets bidder view of barter session
+
+});
+
+router.post('/bidder/session/:id/bid', tokenAuthenticator.authenticate, async(req,res)=>{   // posts bidder's offer for barter session
+
+});
+
+router.post('/bidder/session/:id/negotiations/cancel', tokenAuthenticator.authenticate, async(req,res)=>{   // cancels ongoing negotiations of bidder
+
+});
+
+router.post('/bidder/session/:id/complete', tokenAuthenticator.authenticate, async(req,res)=>{      // completes the barter session (host rating is also prompted here)
+
+});
+
+
+
 
 module.exports = router;
 

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "startApp": "nodemon app_server.js",
-    "build-css":"tailwindcss build src/styles.css -o public/styles.css"
+    "build-css":"tailwindcss build src/styles.css -o public/css/styles.css"
   },
   "repository": {
     "type": "git",
