@@ -245,7 +245,5 @@ router.delete('/host/session/:id', tokenAuthenticator.authenticate, async(req,re
 
 
 
-
-
 module.exports = router;
 
