@@ -47,9 +47,13 @@ router.get('/host/session/:id', tokenAuthenticator.authenticate, async (req, res
 
 });
 
-router.put('/host/session/:id/edit' /*, tokenAuthenticator.authenticate */, async(req,res)=>{   // updates existing barter session
+router.get('/host/session/:id/edit', async(req,res)=>{
+    return res.render('barter/productHost.ejs');
+})
 
-    /*try{
+router.put('/host/session/:id/edit', tokenAuthenticator.authenticate, async(req,res)=>{   // updates existing barter session
+
+    try{
 
         let barterSession = await BarterSession.findById(req.params.id);
 
@@ -78,9 +82,6 @@ router.put('/host/session/:id/edit' /*, tokenAuthenticator.authenticate */, asyn
         console.log(er);
         res.sendStatus(400);
     }
-    */
-    return res.render('barter/productHost.ejs');
-
 });
 
 router.put('/host/session/:id/offer/take', tokenAuthenticator.authenticate, async(req,res)=>{  // takes offer and sends barter session into negotiation stage
