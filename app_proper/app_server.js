@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 const logger = require('morgan');
@@ -43,9 +44,11 @@ app.use(express.urlencoded({extended:false}));
 app.use('/', authRoutes);
 app.use('/barter', barterRoutes);
 app.use('/barter', bidderRoutes);
+app.get('/shop', (req,res)=>{
+    res.render('index');
+});
  
 app.listen(3000, function(){
     console.log('Session started on port 3000');
 });
-
 

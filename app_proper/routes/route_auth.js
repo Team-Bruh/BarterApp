@@ -1,3 +1,4 @@
+
 // This contains all routes pertaining to user authentication
 
 const express = require('express');
@@ -82,4 +83,8 @@ router.post('/token/delete', async (req,res) => {   // delete JWT refresh token
     res.sendStatus(204);
 });
  
+router.get('/profile', (req,res)=>{
+    return res.render('users/profile');
+});
+
 module.exports = router;

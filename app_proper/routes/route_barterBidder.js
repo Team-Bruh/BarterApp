@@ -7,8 +7,8 @@ const tokenAuthenticator = require('../services/tokenAuthenticator');
 
 // Barter Session Bidder
 
-router.get('/bidder/session/:id', tokenAuthenticator.authenticate, async(req,res)=>{        // gets bidder view of barter session
-
+router.get('/bidder/session/:id' /*, tokenAuthenticator.authenticate */, async(req,res)=>{        // gets bidder view of barter session
+    /*
     try{
 
         let barterSession = await BarterSession.findById(req.params.id);
@@ -22,6 +22,8 @@ router.get('/bidder/session/:id', tokenAuthenticator.authenticate, async(req,res
         console.log(er);
         res.sendStatus(400);
     }
+    */
+    res.render('barter/productBidder');
 
 });
  
