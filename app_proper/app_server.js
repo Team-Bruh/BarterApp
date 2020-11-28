@@ -4,6 +4,7 @@ const logger = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+var path=require('path');
 
 app.use(methodOverride('_method'));
 
@@ -15,7 +16,8 @@ app.use(express.json());
 
 // Routes
 const authRoutes = require('./routes/route_auth');
-const barterRoutes = require('./routes/route_barterSessions');
+const barterRoutes = require('./routes/route_barterHost');
+const bidderRoutes = require('./routes/route_barterBidder');
 
 //  MongoDB Connection
 const mongoose_uri = process.env.ATLAS_URI;
@@ -32,7 +34,7 @@ connection.once('open', ()=>{
 });
 
 app.set('view engine', 'ejs');
-app.use(express.static('src'));
+app.use(express.static(path.join(__dirname,'/public/')));
 app.use(express.json());
 
 
@@ -40,9 +42,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use('/', authRoutes);
 app.use('/barter', barterRoutes);
-
-app.listen(3404, function(){
-    console.log('Session started on port 3404');
+app.use('/barter', bidderRoutes);
+ 
+app.listen(3000, function(){
+    console.log('Session started on port 3000');
 });
 
 

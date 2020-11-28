@@ -6,8 +6,8 @@ const bcrypt = require('bcrypt');
 const User = require('./../models/user');
 const Token = require('./../models/token');
 const tokenAuthenticator = require('./../services/tokenAuthenticator');
-
-router.get('/register', tokenAuthenticator.authenticate, (req,res)=>{           // gets registration form
+ 
+router.get('/register', (req,res)=>{           // gets registration form
     res.render('users/register');
 });
 
@@ -81,5 +81,5 @@ router.post('/token/delete', async (req,res) => {   // delete JWT refresh token
     await Token.findOneAndDelete({refreshToken:req.body.token});
     res.sendStatus(204);
 });
-
+ 
 module.exports = router;
