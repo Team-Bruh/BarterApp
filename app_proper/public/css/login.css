@@ -2,15 +2,15 @@ body
 {
 	margin:0;
 	padding:0;
-	background-image: url("../img/background.png");
+	background-image: url("../images/background.png");
 	box-shadow: inset 25px 25px 100px #000000, inset -25px -25px 100px #000000;
 	background-size: cover;
 	background-repeat: no-repeat;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height:100vh;
+   	display: flex;
+   	align-items: center;
+   	justify-content: center;
+    	height:100vh;
 }
 
 .container
